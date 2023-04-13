@@ -49,6 +49,7 @@ public class TechJobs {
                     // Print list of skills, employers, etc
                     for (String item : results) {
                         System.out.println(item);
+
                     }
                 }
 
@@ -74,10 +75,10 @@ public class TechJobs {
     private static String getUserSelection(String menuHeader, HashMap<String, String> choices) {
 
         int choiceIdx = -1;
-        Boolean validChoice = false;
+        boolean validChoice = false;
         String[] choiceKeys = new String[choices.size()];
 
-        // Put the choices in an ordered structure so we can
+        // Put the choices in an ordered structure we can
         // associate an integer with each one
         int i = 0;
         for (String choiceKey : choices.keySet()) {
@@ -93,6 +94,7 @@ public class TechJobs {
             for (int j = 0; j < choiceKeys.length; j++) {
                 System.out.println("" + j + " - " + choices.get(choiceKeys[j]));
             }
+
 
             if (in.hasNextInt()) {
                 choiceIdx = in.nextInt();
@@ -120,6 +122,20 @@ public class TechJobs {
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
 
-        System.out.println("printJobs is not implemented yet");
+        if (someJobs.isEmpty()) {
+            System.out.println("No results.");
+        }
+        else {
+            System.out.println("\n******\n");
+            for (HashMap<String, String> jobData : someJobs) {
+
+                for (String keyName : jobData.keySet()) {
+                    String valueName = jobData.get(keyName);
+                    System.out.println(keyName + " : " + valueName);
+                }
+                System.out.println("\n******\n");
+
+            }
+        }
     }
 }
